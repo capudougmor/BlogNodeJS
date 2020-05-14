@@ -2,15 +2,19 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.send('Pagina principal do ADM')
+  res.render('admin/index.html')
 })
 
 router.get('/posts', (req, res) => {
-  res.send('Pagina de posts')
+  res.render('admin.categorias')
 })
 
 router.get('/categorias', (req, res) => {
-  res.send('Pagina de categorias')
+  res.render('admin/categorias.html')
+})
+
+router.get('/categorias/add', (req, res) => {
+  res.render('admin/addCategorias.html')
 })
 
 module.exports = router

@@ -4,10 +4,14 @@
   const nunjucks = require('nunjucks')
   const bodyParser = require('body-parser')
   const mongoose = require('mongoose')
-  const admin= require('./routes/admin')
+  const admin = require('./routes/admin')
+  const path = require('path')
 
-
-//configuration
+  
+  
+  //configuration
+  app.use(express.static(path.join(__dirname,'public')))
+  
   nunjucks.configure('./views', {
     express: app,
     noCache: true,
