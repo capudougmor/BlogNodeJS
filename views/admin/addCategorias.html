@@ -1,6 +1,11 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+  {% for erro in erros %}
+    <div class="alert alert-danger"> {{erro.texto}} </div>
+   
+  {% endfor %}
   <h3>Nova Categoria</h3>
   <div class="card">
     <div class="card-body">

@@ -7,7 +7,7 @@ const Categoria = new Schema({
     require: true
   },
   slug: {
-    type: string,
+    type: String,
     require: true
   }, 
   date: {
