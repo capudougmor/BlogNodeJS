@@ -4,5 +4,16 @@
   <h2>Lista de categorias</h2>
   <br>
   <a href="/admin/categorias/add"><button class="btn btn-success">Nova categoria</button></a>
+
+  {% for categoria in categorias %}
+    <div class="card mt-4">
+      <div class="card-bady">
+        <h3>{{categoria.nome}} </h3>
+        <small>{{categoria.slug}} </small><br>
+        <small>Data de cração: {{categoria.date}} </small><br>
+        <a href="/admin/categorias/edit/{{categoria.id}}"><button class="btn btn-success mt-4">Editar</button></a>
+      </div>
+    </div>
+  {% endfor %}
   
 {% endblock %}

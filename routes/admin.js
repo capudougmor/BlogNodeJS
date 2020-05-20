@@ -13,7 +13,12 @@ router.get('/posts', (req, res) => {
 })
 
 router.get('/categorias', (req, res) => {
-  res.render('admin/categorias.html')
+  Categoria.find().sort({date: "desc"}).then((categorias) => {
+    res.render('admin/categorias.html', {categorias: categorias})
+  }).catch((err) => {
+    req.flash('error_msg', 'Houve um erro ao adicionar categoria!')
+    req.redirect('/admin')
+  })
 })
 
 router.get('/categorias/add', (req, res) => {
@@ -46,7 +51,10 @@ router.post('/categorias/nova', (req, res) => {
       req.flash('error_msg', 'Houve um erro ao salvar a categoria!')
       res.redirect('/admin')
     })
-  
+  })
+
+router.get('/categorias/edit/:id', (req, res) => {
+  res.render('admin/editCategoria.html')
 })
 
 module.exports = router

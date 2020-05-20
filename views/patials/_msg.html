@@ -1,12 +1,7 @@
-{% if (success_msg != 'undefined') %}
-  <div class="alert alert-success"> {{ req.session.flash.error_msg }}</div>
-{% endif %}
+{% for message in success_msg %}
+  <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
 
-{% if error_msg %}
-  <div class="alert alert-danger">{{ error_msg }} </div>
-{% endif %}
-
-{% if (error_msg !='undefined') %}
-<a class="alert alert-danger">{{ error_msg }} </a>
-  
-{% endif %}
+{% for message in error_msg %}
+  <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
