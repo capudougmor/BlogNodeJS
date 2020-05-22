@@ -37,7 +37,10 @@
 
 //mongoose
   mongoose.Promise = global.Promise;
-  mongoose.connect('mongodb://localhost/blogapp').then(() => {
+  mongoose.connect('mongodb://localhost/blogapp', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }).then(() => {
     console.log('Conectado ao mongo')
   }).catch((err) => {
     console.log('Erro ao conectar ao banco de dados: ' +err)
