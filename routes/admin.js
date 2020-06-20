@@ -54,6 +54,7 @@ router.post('/categorias/nova', (req, res) => {
   })
 
 router.get('/categorias/edit/:id', (req, res) => {
+  console.log(req.params)
   Categoria.findOne({_id:req.params.id}).then((categoria) => {
     res.render('admin/editCategoria.html', {categoria: categoria})
   }).catch((err) => {
@@ -62,8 +63,9 @@ router.get('/categorias/edit/:id', (req, res) => {
   })
 })
 
-router.post('/categorias/editada', async (req, res) => {
+router.put('/categorias/editada/:id', (req, res) => {
   const {nome, slug} = req.body
+  console.log(req.body)
   
   var erros = []
   
@@ -74,8 +76,8 @@ router.post('/categorias/editada', async (req, res) => {
   if(erros.length > 0){
     res.render('admin/addCategorias.html', {erros: erros})
   }
-  
-  await Categoria.findByIdAndUpdate(req.params.id, {nome, slug}).then(() => {
+
+  Categoria.findByIdAndUpdate(req.params.id, {nome, slug}).then(() => {
         req.flash('success_msg', 'Categoria editada com sucesso')
         res.redirect('/admin/categorias')
       }).catch((err) => {

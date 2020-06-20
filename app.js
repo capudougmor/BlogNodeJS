@@ -4,6 +4,7 @@
   const nunjucks = require('nunjucks')
   const bodyParser = require('body-parser')
   const mongoose = require('mongoose')
+  const methodOverride = require('method-override')//metodo para leitura dos metodo e m rotas
   const admin = require('./routes/admin')
   const path = require('path')
   const session = require('express-session')
@@ -11,6 +12,8 @@
 
     
 //configuration
+  app.use(methodOverride('_method'))//metodo usado para complementar as rotas no mongoose
+
   //session
   app.use(session({
     secret: "cursodenode",

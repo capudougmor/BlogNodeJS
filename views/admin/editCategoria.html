@@ -9,13 +9,13 @@
   <h3>Edição de Categoria</h3>
   <div class="card mt-4">
     <div class="card-body">
-      <form action="/admin/categorias/editada" method="post">
-        
+      <form action="/admin/categorias/editada/{{categoria.id}}?_method=PUT " method="POST">
+        <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="id" value="{{categoria.id}} ">
         <label for="nome">Nome: </label>
-        <input type="text" id="nome" name="nome" placeholder="Nome da categoria" class="form-control">
+        <input type="text" id="nome" name="nome" placeholder="Nome da categoria" class="form-control" value="{{categoria.nome}} ">
         <label for="slug">Slug: </label>
-        <input type="text" id="slug" name="slug" placeholder="Slug da categoria" class="form-control">
+        <input type="text" id="slug" name="slug" placeholder="Slug da categoria" class="form-control" value="{{categoria.slug}}">
         <br>
         <button type="submit" class="btn btn-success">Editar categoria</button>
       </form>
