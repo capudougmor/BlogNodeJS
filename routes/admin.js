@@ -87,6 +87,17 @@ router.put('/categorias/editada/:id', (req, res) => {
       req.flash('error_msg', 'Houve um erro ao editar a categoria! ' +err)
       res.redirect('/admin/categorias')
     })
+})
+
+router.delete('/categorias/deletar/:id', (req, res) => {
+  console.log(req.params.id)
+  Categoria.findByIdAndDelete(req.params.id).then(() => {
+    req.flash('success_msg', 'Categoria deletada com sucesso!')
+    res.redirect('/admin/categorias')
+  }).catch((err) => {
+    req.flash('error_msg', 'Houve um erro ao deletar a categoria!')
+    res.redirect('/admin/categorias')
   })
+})
 
 module.exports = router

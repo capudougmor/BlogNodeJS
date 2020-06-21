@@ -9,11 +9,17 @@
     <div class="card mt-4">
       <div class="card-body">
         <h3>{{categoria.nome}} </h3>
-        <small>{{categoria.slug}} </small><br>
+        <small>Slug: {{categoria.slug}} </small><br>
         <small>Data de cração: {{categoria.date}} </small><br>
         <a href="/admin/categorias/edit/{{categoria._id}}"><button class="btn btn-success mt-4">Editar categoria</button></a>
+        <form action="/admin/categorias/deletar/{{categoria.id}}?_method=DELETE" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="" class="btn btn-danger mt-2">Deletar categoria</button>
+        </form>
       </div>
     </div>
+  {% else %}
+    <h4 class="mt-4">Nenhuma categoria registrada.</h2>
   {% endfor %}
   
 {% endblock %}
