@@ -1,10 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+  {% for erro in erros %}
+    <div class="alert alert-danger">{{erro.text}}</div>
+  {% endfor %}
+  
   <div class="card">
     <div class="card-body">
       <h4>Nova postagem:</h4>
-      <form action="">
+      <form action="/admin/postagens/nova" method="POST">
         <label for="titulo">Título: </label>
         <input type="text" name="titulo" class="form-control">
         <label for="slug">Slug: </label>
